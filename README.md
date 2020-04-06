@@ -11,4 +11,4 @@ To run the application:
 * run the update-database command in Package Manager Console, to create and seed the database
 * run the application
 
-SQL backup in Eintech.bak life
+SQL backup in Eintech.bak file
