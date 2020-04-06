@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PersonViewModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+@if (ViewData["searchString"] != null)
+{
+	<h1>Search results for: @ViewData["searchString"]</h1>
+}
+else
+{
+	<h1>List of People</h1>
+}
+
+<p>
+	<a asp-action="Create">Create New</a>
+</p>
+
+@if (Model.Any())
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.DateAdded)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Group.Name)
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				@Html.HiddenFor(modelItem => item.Id)
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.DateAdded)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Group.Name)
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<p>No records to display</p>
+}
